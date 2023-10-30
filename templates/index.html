@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Recommender System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #num_recommendations
+        {
+            width: 28.3em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Recommender System</h1>
+    <form method="post" action="/recommend">
+        <label for="selected_song">Select a song:</label>
+        <select name="selected_song" id="selected_song">
+            {% for song in music_list %}
+            <option value="{{ song }}">{{ song }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="num_recommendations">Select the number of recommendations:</label>
+        <input type="number" name="num_recommendations" id="num_recommendations" min="1" max="10" value="5">
+        <br>
+        <input type="submit" value="Show Recommendations">
+    </form>
+</body>
+</html>
